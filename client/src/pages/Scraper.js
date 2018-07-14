@@ -1,3 +1,5 @@
+import {Header} from "../components/Header/Header.js"
+import {Footer} from "../components/Footer/Footer.js"
 import React, { Component } from "react";
 //import API from "../../utils/API";
 //import { Link } from "react-router-dom";
@@ -5,7 +7,7 @@ import React, { Component } from "react";
 //import { List, ListItem } from "../../components/List";
 //import { Input, TextArea, FormBtn } from "../../components/Form";
 
-class Scraper extends Component {
+export class Scraper extends Component {
   state = {
     something: [],
   };
@@ -47,10 +49,9 @@ class Scraper extends Component {
   render() {
     return (
       <div>
-        <h1>Here's stuff</h1>
+      <Header />
+      <Footer />
       </div>
     );
   }
 }
-
-export default Scraper;

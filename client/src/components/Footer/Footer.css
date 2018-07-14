@@ -1,0 +1,8 @@
+*{
+  font-family: 'Muli', sans-serif;
+}
+
+#footer, #footer > h5 > a{
+  width: 100%;
+  padding:.2rem;
+}
