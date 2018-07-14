@@ -1,4 +1,5 @@
 import {Header} from "../components/Header/Header.js"
+import {Articles} from "../components/Articles/Articles.js"
 import {Footer} from "../components/Footer/Footer.js"
 import React, { Component } from "react";
 //import API from "../../utils/API";
@@ -50,6 +51,7 @@ export class Scraper extends Component {
     return (
       <div>
       <Header />
+      <Articles />
       <Footer />
       </div>
     );
