@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./Articles.css";
-import {Article} from "../Article/Article.js";
+import { Article } from "../Article/Article.js";
+import test from "../../utils/test.json"
 
 export class Articles extends Component {
 
@@ -12,7 +13,17 @@ export class Articles extends Component {
 
     return (
       <div>
-        <Article />
+
+        {test.map(element => {
+          return (<Article 
+          note = {element.note}
+          _id = {element._id}
+          title = {element.title}
+          link = {element.link}
+          summary = {element.summary}
+          />)
+        })
+        }
       </div>
     );
   }
