@@ -14,7 +14,7 @@ export class Article extends Component {
   render() {
 
     return (
-      <div class="article-wrapper container">
+      <div className="article-wrapper container">
         <h2>{this.props.title}</h2>
         <p>{this.props.summary}
           <span>
@@ -22,10 +22,10 @@ export class Article extends Component {
           </span>
           &laquo;
         </p>
-        <div class="add-note btn btn-primary" data-id={this.props._id}>
-          <i class="fas fa-sticky-note"></i> Add a note
+        <div className="add-note btn btn-primary" data-id={this.props._id}>
+          <i className="fas fa-sticky-note"></i> Add a note
         </div>
-        <div class="comments-wrapper" data-id="idWillGoHere">
+        <div className="comments-wrapper" data-id="idWillGoHere">
 
           {/* Comments will be mapped here. */}
 

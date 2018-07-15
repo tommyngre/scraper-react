@@ -18,6 +18,7 @@ export class Articles extends Component {
           return (<Article 
           note = {element.note}
           _id = {element._id}
+          key = {element._id}
           title = {element.title}
           link = {element.link}
           summary = {element.summary}
