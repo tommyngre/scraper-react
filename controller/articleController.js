@@ -44,6 +44,7 @@ module.exports = {
 
   },
   findAll: function(req, res) {
+    console.log("findin")
     // db.Book
     //   .find({}) //req.query
     //   .sort({ _id: -1 })
@@ -51,6 +52,7 @@ module.exports = {
     //   .catch(err => res.status(422).json(err));
   },
   findAllApi: function(req,res) {
+    console.log("json")
     res.json(req);
   }
 }
