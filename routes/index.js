@@ -1,15 +1,21 @@
 const router = require("express").Router();
 const articleController = require("../controller/articleController.js");
 
-// Matches with "/api/books"
-router.route("/")
-  .get(articleController.findAll)
-// .post(articleController.create);
+//query mongo
+router.get('/api/articles', function (req, res, next) {
+  console.log("get");
+  articleController.get()
+});
 
-router.route("/api")
-  .get(articleController.findAllApi)
+//save to mongo
+router.post('/api/articles', function (req, res, next) {
+  console.log("hello world");
+  res.json({"hello": "post"})
+});
 
-router.route("/scrape")
-  .get(articleController.scrape)
+//delete from database
+router.delete('/api/articles', function (req, res, next) {
+  res.json({"hello": "delete"})
+})
 
 module.exports = router;

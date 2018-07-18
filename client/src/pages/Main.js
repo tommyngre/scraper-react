@@ -4,7 +4,7 @@ import {Footer} from "../components/Footer/Footer.js"
 import React, { Component } from "react";
 //import API from "../../utils/API";
 
-export class Scraper extends Component {
+export class Main extends Component {
   state = {
     something: [],
   };

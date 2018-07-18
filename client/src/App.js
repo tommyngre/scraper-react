@@ -4,7 +4,7 @@ import {
   Route,
   Switch
 } from 'react-router-dom'
-import {Scraper} from "./pages/Scraper"
+import {Main} from "./pages/Main"
 import {NoMatchPage} from "./pages/NoMatch"
 //import logo from "./logo.svg";
 import "./App.css";
@@ -13,9 +13,7 @@ const App = () => (
   <Router>
     <div>
       <Switch>
-        <Route exact path="/" component={Scraper} />
-        {/* <Route exact path="/scrape" component={Scraper} />
-        <Route exact path="/api" component={Scraper} /> */}
+        <Route exact path="/" component={Main} />
         <Route component={NoMatchPage} />
       </Switch>
     </div>

@@ -16,7 +16,6 @@ export class Articles extends Component {
 
         {test.map(element => {
           return (<Article 
-          note = {element.note}
           _id = {element._id}
           key = {element._id}
           title = {element.title}
