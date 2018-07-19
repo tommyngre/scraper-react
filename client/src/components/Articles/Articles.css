@@ -6,3 +6,13 @@
   width: 100%;
   padding:.2rem;
 }
+
+#search-box{
+  width:80%;
+  margin:0 auto;
+  text-align:center
+}
+
+.btn {
+  margin-bottom: 10px;
+}

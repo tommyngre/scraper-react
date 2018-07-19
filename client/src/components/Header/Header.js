@@ -22,11 +22,11 @@ export class Header extends Component {
     return (
       <div id="header-wrapper" className="text-center">
         <h1>New York Times Article Search</h1>
-        <form>
+        {/* <form>
           <div className="form-group">
             <label for="search-box">Enter your search</label>
             <input 
-            name="search"
+            name="query"
             type="text" 
             className="form-control" 
             id="search-box" 
@@ -37,7 +37,7 @@ export class Header extends Component {
             />
           </div>
           <button type="submit" className="btn btn-primary">Submit</button>
-        </form>
+        </form> */}
       </div>
     )
   }

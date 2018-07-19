@@ -1,28 +1,45 @@
-const db = require("../models");
-var axios = require('axios');
-var cheerio = require('cheerio');
+const db = require("../models/index");
 
 module.exports = {
-  get: function (req, res) {
-    var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
-    url += '?' + $.param({
-      'api-key': "d9e945f34b04448ba1570afa8cedd901",
-      'q': query
-    });
-    $.ajax({
-      url: url,
-      method: 'GET',
-    }).done(function (result) {
-      console.log(result);
-    }).fail(function (err) {
-      throw err;
-    });
+  findAll: function (req, res) {
+    let reqQuery;
+    if (typeof req == "undefined") { 
+      console.log("no req"); 
+      reqQuery = ""; 
+    } else {
+      reqQuery = req.query;
+    }
+    console.log(reqQuery);
 
+    db.Article
+      .find(reqQuery)
+      .sort({ date: -1 })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
   },
-  post: function (req, res) {
-    console.log("findin")
+  findById: function (req, res) {
+    db.Article
+      .findById(req.params.id)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
   },
-  delete: function (req, res) {
-    console.log("json")
+  create: function (req, res) {
+    db.Article
+      .create(req.body)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+  update: function (req, res) {
+    db.Article
+      .findOneAndUpdate({ _id: req.params.id }, req.body)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+  remove: function (req, res) {
+    db.Article
+      .findById({ _id: req.params.id })
+      .then(dbModel => dbModel.remove())
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
   }
-}
+};

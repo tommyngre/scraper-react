@@ -2,20 +2,26 @@ const router = require("express").Router();
 const articleController = require("../controller/articleController.js");
 
 //query mongo
-router.get('/api/articles', function (req, res, next) {
-  console.log("get");
-  articleController.get()
+// router.get('/', function (req, res, next) {
+//   articleController.findAll()
+// });
+
+router.post('/api/articles', function (req, res, next) {
+  articleController.create()
 });
 
-//save to mongo
-router.post('/api/articles', function (req, res, next) {
-  console.log("hello world");
-  res.json({"hello": "post"})
+router.get('/api/articles/:id', function (req, res, next) {
+  articleController.findById()
+});
+
+
+router.put('/api/articles/:id', function (req, res, next) {
+  articleController.put()
 });
 
 //delete from database
-router.delete('/api/articles', function (req, res, next) {
-  res.json({"hello": "delete"})
+router.delete('/api/articles/:id', function (req, res, next) {
+  articleController.remove()
 })
 
 module.exports = router;

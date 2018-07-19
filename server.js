@@ -23,11 +23,9 @@ app.get("*", function(req, res) {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
-
-
 mongoose.Promise = Promise;
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/reactscraper"
+  process.env.MONGODB_URI || "mongodb://localhost/nyt"
 );
 //,{userNewUrlParser: true}
 
