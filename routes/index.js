@@ -1,10 +1,11 @@
 const router = require("express").Router();
 const articleController = require("../controller/articleController.js");
 
-//query mongo
-// router.get('/', function (req, res, next) {
-//   articleController.findAll()
-// });
+router.get('/', function (req, res, next) {
+  // let query = req.params.query;
+  // console.log(query);
+  articleController.findAll()
+});
 
 router.post('/api/articles', function (req, res, next) {
   articleController.create()
