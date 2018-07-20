@@ -2,12 +2,6 @@ const db = require("../models/index");
 
 module.exports = {
   findAll: function (req, res) {
-    if (typeof req == "undefined") { 
-      console.log("no req"); 
-      // res.send("No results");
-      return;
-    }
-    
     db.Article
       .find(req.query)
       .sort({ date: -1 })

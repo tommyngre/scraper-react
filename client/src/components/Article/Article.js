@@ -12,7 +12,9 @@ export const Article = props => (
         </a>
       </span>
     </p>
-    <div className="add-note btn btn-primary" data-id={props._id}>
+    <div 
+      className="add-note btn btn-primary"
+      onClick={props.onClick}>
       <i className="fas fa-sticky-note"></i>
       Add to favs
     </div>

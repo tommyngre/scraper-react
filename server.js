@@ -10,12 +10,14 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// Serve up static assets (usually on heroku)
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
-}
-//app.use(express.static("client/build"));
 app.use(routes);
+
+// Serve up static assets (usually on heroku)
+//if (process.env.NODE_ENV === "production") {
+//  app.use(express.static("client/build"));
+//}
+
+app.use(express.static("client/build"));
 
 // Send every request to the React app
 // Define any API routes before this runs

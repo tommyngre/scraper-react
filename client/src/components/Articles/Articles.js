@@ -11,32 +11,37 @@ export class Articles extends Component {
     noResults: false,
   }
 
+  componentDidMount() {
+  }
+
+  handleInputChange = event => {
+    const value = event.target.value;
+    this.setState({
+      query: value
+    });
+  };
+
   handleFormSubmit = event => {
-    console.log("handleFormSubmit");
     event.preventDefault();
-    let { query } = this.state;
+    let {query} = this.state;
     this.getArticles(query)
   };
 
   getArticles = query => {
     //TODO: clears previous results
 
-    let url = "https://api.nytimes.com/svc/search/v2/articlesearch.json?sort=newest?"
-    let term = query
+    let url = "https://api.nytimes.com/svc/search/v2/articlesearch.json?"
     let key = `&api-key=d9e945f34b04448ba1570afa8cedd901`
+    url += `q=${query}${key}`
 
     //TODO: err handle query (e.g. certain special chars)
-
-    url += `&q=${term}${key}`
-    console.log(url);
-
     API
       .queryNYT(url)
       .then(results => {
-        console.log(results.data)
+        console.log("results.data.response.docs",results.data.response.docs)
 
         this.setState({
-          results: results.data,
+          results: results.data.response.docs,
           query: "",
         });
 
@@ -44,12 +49,20 @@ export class Articles extends Component {
       .catch(err => console.log(err))
   }
 
+  saveArticle = article => {
+    console.log(article)
+    API.save(article).then(results => {
+      console.log(results)
+    })
+    .catch(err => console.log(err));
+  }
+
   render() {
 
     return (
       <div>
 
-        <form className="text-center" onFormSubmit={this.handleFormSubmit}>
+        <form className="text-center">
           <div className="form-group">
             <label>Enter your search</label>
             <input
@@ -62,7 +75,11 @@ export class Articles extends Component {
               onChange={this.handleInputChange}
             />
           </div>
-          <button type="submit" className="btn btn-primary">Submit</button>
+          <button 
+          type="submit" 
+          className="btn btn-primary"
+          onClick={this.handleFormSubmit}
+          >Submit</button>
         </form>
 
         {this.state.results.map(article => {
@@ -74,7 +91,7 @@ export class Articles extends Component {
               summary={article.snippet}
               date={article.pub_date}
               type="Save"
-            // onClick={() => this.save(article)}
+              onClick={() => this.saveArticle(article)}
             />
           )
         })
